@@ -6,7 +6,8 @@
 
 Power Management 1 Control(PM1_CNT)-offset 4h  
 <img width="667" height="158" alt="image" src="https://github.com/user-attachments/assets/cb83d374-3a3d-49d8-87dd-b64d8fac9490" /> 
-![Sleep Enable也要開啟]<img width="653" height="54" alt="image" src="https://github.com/user-attachments/assets/63a873ab-3978-4836-b6bf-88c067a5da5e" />
+<Sleep Enable也要開啟>
+<img width="653" height="54" alt="image" src="https://github.com/user-attachments/assets/63a873ab-3978-4836-b6bf-88c067a5da5e" />
 <img width="663" height="154" alt="image" src="https://github.com/user-attachments/assets/7c5cbdc3-53c2-416e-ade9-debd3d63b419" />
 
 先將等候五秒的程式註解原因?  
