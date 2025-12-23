@@ -3,7 +3,7 @@ echo -off
 #Read 32-bit status value from I/O port 0x0500
 mm 500 -w 4 -IO
 # mm 0500 05000001 -w 4 -IO
-# mm 500 -w 4 -IO
+###
 
 #RTC time set 0:0:0 and time start
 
