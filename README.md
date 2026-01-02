@@ -14,5 +14,7 @@ Sleep Enable也要開啟
 
 先將等候五秒的程式註解原因?  
 先因為「鬧鐘」在你下達「關機指令」之前就已經響過了。在計算機的電源管理邏輯中，如果 喚醒事件（Wake Event） 已經發生且 狀態位元（Status Bit） 已被設為 1，此時系統通常會拒絕進入睡眠或關機狀態，以防止系統進入一個「永遠醒不來」或「邏輯矛盾」的狀態。  
+
+**I/O PORT 70/71，與I/O SPACE 0500有啥區別?**
 <img width="708" height="618" alt="image" src="https://github.com/user-attachments/assets/8da74b0b-3cc5-4e0b-833b-568b7ffeb3a4" />
 
