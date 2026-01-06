@@ -41,7 +41,8 @@ mm 71 -w 1 -IO
 
 #Clear RTC_STS bit in PM1 register to avoid pending wake
 mm 501 04 -w 1 -IO
-mm 0500 05000001 -w 4 -IO
+mm 503 04 -w 1 -IO
+#mm 0500 05000001 -w 4 -IO
 mm 0504 00003C00 -w 4 -IO
 time
 
