@@ -31,6 +31,7 @@ mm 71 -w 1 -IO
 
 mm 501 04 -w 1 -IO  
 > (PM1_EN_STS)代表從0X500開始過1個BYTE就會是501，04意思是501的第三個BIT== 500的第十個BIT此BIT代表RTC STATUS(RTC_STS)以上程式先將他RESET
+
 mm 503 04 -w 1 -IO
 > (PM1_EN_STS)以此類推是將500開始的第26個BIT RTC ALARM ENABLE設為1，前提是要先將RTC_STS設置好才能觸發，與SCI_EN可組合成兩種模式SMI(無)與SCI(有)，兩者差別在有無作業系統狀況下執行，功能為當SYSTEM進入S3-S5時，然後可觸發WAKE事件，代表前面設置的ALARM若為五秒可在五秒後觸發。
 
