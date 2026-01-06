@@ -18,3 +18,23 @@ Sleep Enable也要開啟
 **I/O PORT 70/71，與I/O SPACE 0500有啥區別?**
 <img width="708" height="618" alt="image" src="https://github.com/user-attachments/assets/8da74b0b-3cc5-4e0b-833b-568b7ffeb3a4" />
 
+## 程式碼介紹
+mm 500 -w 4 -IO  
+> 代表查看0500之下所存放的值
+mm 70 0B -w 1 -IO
+mm 71 20 -w 1 -IO
+>代表把 CMOS index register B ，的DATA設成20對應的意思是BIT5 AIE (Alarm Interrupt Enable)允許alarm
+
+mm 70 0C -w 1 -IO  
+mm 71 -w 1 -IO  
+> read register C，查看register c底下的值，bit5代表alarm flag=當前面設定的alarm時間match當前的時間會為1(high)，bit7 Interrupt Request Flag(IRQF)當AF與AIE同時為1時觸發，會導致 RTC中斷被觸發
+
+mm 501 04 -w 1 -IO  
+> (PM1_EN_STS)代表從0X500開始過1個BYTE就會是501，04意思是501的第三個BIT== 500的第十個BIT此BIT代表RTC STATUS(RTC_STS)以上程式先將他RESET
+mm 503 04 -w 1 -IO
+> (PM1_EN_STS)以此類推是將500開始的第26個BIT RTC ALARM ENABLE設為1，前提是要先將RTC_STS設置好才能觸發，與SCI_EN可組合成兩種模式SMI(無)與SCI(有)，兩者差別在有無作業系統狀況下執行，功能為當SYSTEM進入S3-S5時，然後可觸發WAKE事件，代表前面設置的ALARM若為五秒可在五秒後觸發。
+
+mm 0504 00003C00 -w 4 -IO  
+> (PM1_CNT)最後在此REGISTER下將，BIT13代表Sleep Enable(SLP_EN)開啟，並設置Sleep Type(SLP_TYP) BIT12:10 這裡我設定為S5==Soft Off。
+
+**總結：執行完整個程式碼後可達成關機五秒後wakeup的功能。**
